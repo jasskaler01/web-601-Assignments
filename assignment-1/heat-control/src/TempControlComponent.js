@@ -5,6 +5,19 @@ export default function TempControl(){
     const [ temp , setTemp] = useState(30)
     const [cel , setCel] = useState("Celsius")
     const [fah , setFah] = useState("")
+    const [m , setMode] = useState("Heat")
+   function changeMode(){
+    if (m ==="Heat"){
+        setMode("Cold")
+        
+    }
+    if (m ==="Cold"){
+        setMode("Auto")
+    }
+    if (m ==="Auto"){
+        setMode("Heat")
+    }
+   }
     function ChangeF(){
         if (cel === "Celsius"){
             setTemp(temp+38.3)
@@ -34,6 +47,11 @@ export default function TempControl(){
         }}>Change To Celsius</button>
 
             </div> 
+            <div>
+                <h1>Mode : {m} </h1>
+                <button onClick={()=>{changeMode()
+        }}>Change Mode</button>
+            </div>
             
             
             </div>
