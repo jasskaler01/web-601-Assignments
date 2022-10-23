@@ -8,7 +8,7 @@ import TempControl from './TempControlComponent';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TempControl/>
+    <Movie/>
   </React.StrictMode>
 );
 
