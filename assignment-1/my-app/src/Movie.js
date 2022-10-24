@@ -2,10 +2,12 @@ import React, {useState} from "react";
 
 export default function Movie(){
 
-    retrun(
-        <sec>
+    return(
+        <div>
         <h1>Assignment 2</h1>
-        <h2>Jaskaran Singh</h2></sec>
+        <h2>Jaskaran Singh</h2>
+        </div>
+        
     )
 
 }
