@@ -1,45 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import Movie from './Movie'
+import React, {useState,useEffect} from 'react';
+import {Row,Col,Card, Divider} from 'antd';
+import axios from "axios"
+import MyCard from './components/MyCard';
 function App() {
-  const movieList=[
-    {
-      title:"The Godfather",
-      year:"1972",
-      genre:"Drama",
-      director:"Francis Ford Capolla"
-    },
-    {
-      title:"Superbad",
-      year:"2007",
-      genre:"Comedy",
-      director:"Greg Mottola"
-    },
-    {
-      title:"The Departed",
-      year:"2006",
-      genre:"Drama",
-      director:"Martin Scorsese"
-    },
-    {
-      title:"Saving Private Ryan",
-      year:"1998",
-      genre:"Action",
-      director:"Steven Spielberg"
-    },
-    {
-      title:"The Expendables",
-      year:"2010",
-      genre:"Action",
-      director:"Sylvester Stallone"
-    }
-  ]
+  const [blogs , setBlogs] = useState(null);
+  const[ status, setStatus] = useEffect(false);
+   useEffect(()=>{
+    axios.get("https://jsonplaceholder.typicode.com/users").then((response)=>{
+setBlogs(response.data)
+setStatus(true)
+    }).catch(()=>{
+      console.log("Api FAiles")
+      setStatus(false)
+    })
+   },[])
+ 
   return (
-    <div className="App">
-{movieList.map(
-(movieObj)=>{return (<Movie title={movieObj.title} year={movieObj.year} genre={movieObj.genre } director ={movieObj.director} />)}  
-   )}   </div>
+  <div>
+    <Row gutter={16}>
+      <Col className='gutter-row'>
+        Header
+      </Col>
+    </Row>
+    <Divider orientation='center'>
+      Items
+    </Divider>
+    <Row gutter={16}>
+    {status && blogs.map((
+        blogObj)=>{
+          return <MyCard />
+        }
+      )}
+    </Row>
+  </div>
   );}
 
 
